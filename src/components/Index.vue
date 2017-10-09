@@ -30,11 +30,16 @@
       }
     },
     created() {
-
+      this.ready();
     },
     methods: {
       handleClick(row) {
         console.log(row);
+      },
+      ready() {
+          this.$http.get('http://localhost/web/WebService.asmx/Select').then((res) => {
+            console.log(res.data);
+          });
       }
     },
     components: {

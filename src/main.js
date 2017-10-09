@@ -13,6 +13,8 @@ import App from './App'
 //  导入组件
 import router from './router'
 
+import resource from 'vue-resource'
+
 //  导入element组件
 import ElementUI from 'element-ui'
 
@@ -26,6 +28,8 @@ Vue.prototype.$deleteData = fetchDelete;
 
 //使用element-ui
 Vue.use(ElementUI);
+
+Vue.use(resource);
 
 //  发布后是否显示提示
 Vue.config.productionTip = false;
