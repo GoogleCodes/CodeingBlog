@@ -4,7 +4,7 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/inside.html'),
+    index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -24,7 +24,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     //  端口
-    port: 8080,
+    port: 8888,
     //是否自动打开浏览器
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',

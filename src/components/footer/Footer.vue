@@ -1,6 +1,6 @@
 <template>
   <!-- footer start -->
-  <div class="footer clear">
+  <div class="footer clear" v-show="$route.meta.footer">
     <a href="http://www.miitbeian.gov.cn" class="ft-12">&copy; {{ getYear }} - 粤ICP备15025692号</a>
   </div>
   <!-- footer end -->
@@ -11,7 +11,7 @@
     name: 'foots',
     data() {
         return {
-          yea: null
+
         }
     },
     computed: {
@@ -30,10 +30,17 @@
 
 <style>
   .footer {
-    background: #eef1f6;
-    width: 90%;
+    text-align: center;
     position: absolute;
     bottom: 0px;
-    margin: 10px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
   }
+
+  .footer a {
+    color: #2f2f2f;
+    line-height: 50px;
+  }
+
 </style>

@@ -10,7 +10,7 @@ address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal;font-style:nor
 caption,th{text-align:left;}
 .blocks{display:block;}
 em,i,small,caption,th{font-weight:normal;font-style:normal;font-size:100%;}
-h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;font-size:100%;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;font-size:100%;font-family: 'Montserrat', sans-serif;}
 q:before,q:after{content:'';}
 .clearfix{*zoom:1;}
 .clearfix:after{content:"."; display:block;clear:both;visibility:hidden;line-height:0;height:0;}

@@ -2,9 +2,9 @@
  * Created by SamHong on 2017/9/28.
  */
 
-
 import axios from 'axios'
 import qs from 'qs'
+import api from '../common/prot_url'
 
 //  get
 export const fetchGet = (target, data) => {
@@ -18,7 +18,7 @@ export const fetchGet = (target, data) => {
   }
   return new Promise((resolve, reject) => {
     axios({
-      url: localStorage.apiDomain + 'public' + target,
+      url: api.get_http_ip.HTTP_IP + target,
       method: 'get',
       withCredentials: false
     }).then(function (response) {
@@ -34,7 +34,7 @@ export const fetchPost = (target, data) => {
   return new Promise((resolve, reject) => {
     var postData = qs.stringify(data);
     axios({
-      url: localStorage.apiDomain + 'public' + target,
+      url: api.GET_HTTP_IP.HTTP_IP + 'public' + target,
       method: 'post',
       data: postData,
       withCredentials: false
@@ -51,7 +51,7 @@ export const fetchPut = (target, data) => {
   return new Promise((resolve, reject) => {
     var postData = qs.stringify(data);
     axios({
-      url: localStorage.apiDomain + 'public' + target,
+      url: api.GET_HTTP_IP.HTTP_IP + 'public' + target,
       method: 'put',
       data: postData,
       withCredentials: false
@@ -75,7 +75,7 @@ export const fetchDelete = (target, data) => {
   }
   return new Promise((resolve, reject) => {
     axios({
-      url: localStorage.apiDomain + 'public' + target,
+      url: api.GET_HTTP_IP.HTTP_IP + 'public' + target,
       method: 'delete',
       withCredentials: false
     }).then(function (response) {

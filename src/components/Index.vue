@@ -1,14 +1,9 @@
 <template>
   <div class="index-con">
-    <div class="clear">
-      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="用户管理" name="first">
-          <div class="el-tabs-con">
-            <userinfo></userinfo>
-          </div>
-        </el-tab-pane>
-      </el-tabs>
+    <div id="wrapper">
+      <h2>Blog!</h2>
     </div>
+    <canvas id="canvas"></canvas>
   </div>
 </template>
 
@@ -21,65 +16,86 @@
     name: 'index',
     data () {
       return {
+        list: [],
         activeName: 'first',
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }]
       }
     },
-    created() {
-      this.ready();
+    mounted() {
+      document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+      })
+      var c = document.getElementById('canvas'),
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+        h = window.innerHeight,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+      function i() {
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+      }
+      function d(i,j) {
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+          n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r -= u /- 50
+        x.fillStyle = '#' + (v(r) * 127 + 128 << 16 | v(r + u / 3) * 127 + 128 << 8 | v(r + u / 3 * 2) * 127 + 128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+      }
+      function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t > h || t < 0) ? y(p) : t
+      }
+      document.onclick = i
+      document.ontouchstart = i
+      i()
     },
     methods: {
-      handleClick(row) {
-        console.log(row);
-      },
-      ready() {
-          this.$http.get('http://localhost/web/WebService.asmx/Select').then((res) => {
-            console.log(res.data);
-          });
-      }
+
     },
     components: {
       ElRadio,
       ElCheckbox,
       userinfo
-
     }
   }
 </script>
 
 <style>
-  .right-nav {
-    margin-left: 200px;
+
+  #canvas {
+    width: 100%;
   }
 
-  .index-con {
-    padding-top: 100px;
-    margin-left: 40px;
-  }
-
-  .el-tabs {
-    width: 796px;
-  }
-
-  .el-tabs .el-tabs__header {
-    margin: 0px;
-  }
-
-  .el-tabs__content .el-tab-pane {
-    height: 320px;
-    background: #eef1f6;
-    border: 1px solid #d1dbe5;
-    border-top: none;
-  }
-
-  .el-tabs-con {
-    padding: 10px;
-    height: 90%;
-    overflow-y: auto;
+  #wrapper {
+    position: absolute;
+    left: 0;
+    width: 320px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -160px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
   }
 
 </style>
