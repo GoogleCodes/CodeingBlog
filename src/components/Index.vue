@@ -1,7 +1,9 @@
 <template>
   <div class="index-con">
     <div id="wrapper">
-      <h2>Blog!</h2>
+      <h2>
+        <a href="https://github.com/GoogleCodes">github!</a>
+      </h2>
     </div>
     <canvas id="canvas"></canvas>
   </div>
@@ -82,17 +84,17 @@
 
   #canvas {
     width: 100%;
+    overflow-y: hidden;
   }
 
   #wrapper {
     position: absolute;
-    left: 0;
     width: 320px;
     text-align: center;
-    top: 50%;
+    top: 30%;
     left: 50%;
     margin-left: -160px;
-    margin-top: -160px;
+    /*margin-top: -160px;*/
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
